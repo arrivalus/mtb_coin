@@ -585,7 +585,7 @@ p {
 /*-------------------------secscreen------------------------*/
 
 .secscreen {
-    background-image: url(../images/bg_2.png);
+    background-image: url(../../public/images/bg_2.png);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -658,7 +658,7 @@ p {
             position: absolute;
             top: 0px;
             left: calc(50% - 5px);
-            background-image: url(../images/arrow_best.png);
+            background-image: url(../../public/images/arrow_best.png);
             background-repeat: no-repeat;
             background-position: center;
             width: 10px;
@@ -676,7 +676,7 @@ p {
     padding-bottom: 100px;
     margin-top: 0px;
     position: relative;
-    background-image: url(../images/bg_3.png);
+    background-image: url(../../public/images/bg_3.png);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -733,7 +733,7 @@ p {
 
 .roadmap {
     margin-bottom: 80px;
-    background-image: url(../images/road_bg.png);
+    background-image: url(../../public/images/road_bg.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -817,7 +817,7 @@ p {
             top: calc(50% - 25px);
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url(../images/road_arrow.png);
+            background-image: url(../../public/images/road_arrow.png);
         }
     }
     &__item-blue {
@@ -827,7 +827,7 @@ p {
         -moz-box-shadow: 0px 7px 16px 0px rgba(127, 194, 236, 0.3);
         box-shadow: 0px 7px 16px 0px rgba(127, 194, 236, 0.3);
         &::before {
-            background-image: url(../images/road_arrow_blue.png);
+            background-image: url(../../public/images/road_arrow_blue.png);
         }
         .roadmap__title {
             color: #fff;
@@ -885,7 +885,7 @@ p {
             width: 23px;
             height: 23px;
             display: block;
-            background-image: url(../images/dot_hover.png);
+            background-image: url(../../public/images/dot_hover.png);
             background-repeat: no-repeat;
             background-position: center;
             border-radius: 50%;
@@ -914,13 +914,13 @@ p {
             color: #fff;
         }
         &::before {
-            background-image: url(../images/road_arrow_green.png);
+            background-image: url(../../public/images/road_arrow_green.png);
         }
     }
 }
 
 .footerbg {
-    background-image: url(../images/footer_bg.png);
+    background-image: url(../../public/images/footer_bg.png);
     background-position: bottom center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -1028,7 +1028,7 @@ p {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: url(../images/bg_soc.png);
+        background-image: url(../../public/images/bg_soc.png);
         width: 61px;
         height: 55px;
         transition: all 0.3s ease-in-out;
@@ -1041,7 +1041,7 @@ p {
             line-height: 0;
         }
         &:hover {
-            background-image: url(../images/bg_soc_hover1.png);
+            background-image: url(../../public/images/bg_soc_hover1.png);
         }
     }
 }
@@ -1116,7 +1116,7 @@ p {
     &__copyr {
         border-top: 1px solid #e1e1e1;
         padding: 60px 0 45px;
-        background-image: url(../images/copyright.png);
+        background-image: url(../../public/images/copyright.png);
         background-position: bottom center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -1344,7 +1344,23 @@ p {
         padding-top: 10px;
     }
 }
+@mixin beforescroll ($duration) {
+    opacity: 0.2;
+    // position: relative;
+    // top: 50px;
+    margin-top: 50px;
+    transition-duration: $duration;
+    transition-property: all;
+    
+}
+@mixin onscroll {
+    opacity: 1;
+    // position: relative;
+    // top: 0px;
+    transition-duration: 2s;
+    transition-property: all;
 
+}
 .firstmain__title {
     span {
         font-size: 115px;
@@ -1353,6 +1369,10 @@ p {
         font-family: 'Roboto Condensed', sans-serif;
         color: #4ea2d7;
     }
+    // &:hover{
+    //     @include beforescroll(2s);
+
+    // }
 }
 
 .buynow {

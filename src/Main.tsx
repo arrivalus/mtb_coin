@@ -1,24 +1,82 @@
 import React from 'react';
 import './css/style.scss';
+import { motion } from "framer-motion"
+
+const upAnimation = {
+    hidden:(custom: any) => ({
+        y: 1/custom*200,
+        opacity: 0,
+
+    }),
+    visible: (custom: any) => ({
+        y: 0,
+        opacity: 1,
+        transition: { 
+            delay: (custom - 0.8) * 0.3,
+            duration: 1 
+        },
+
+    }),
+}
+
+const leftShiftAnimation = {
+    hidden:{
+        x: -300,
+        opacity: 0,
+
+    },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { 
+            delay: 0.2,
+            duration: 1 
+        },
+    },
+}
+
+const rightShiftAnimation = {
+    hidden:{
+        x: 300,
+        opacity: 0,
+
+    },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { 
+            delay: 0.2,
+            duration: 1 
+        },
+    },
+}
+
 
 function Main() {
   return (
     <>
-    <div className="wrapper">
+    <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        className="wrapper">
         <div className="mainscreen wow fadeIn" data-wow-duration="2s" style={{backgroundImage: "url(images/bg1.jpg)"}}>
             <div className="contfoescroll">
                 <header className="header">
                     <div className="containerm">
                         <div className="headerins">
-                            <div className="headerins__logo">
+                                <div className="headerins__logo">
                                 <a href="index.html">
-                                    <img src="images/logo.png" alt=""/>
+                                    <motion.img 
+                                        animate = {{rotateX: 360, transition: { 
+                                            duration: 1.5 
+                                        },}}
+                                        src="images/logo.png" alt=""/>
                                 </a>
                             </div>
                             <div className="headerins__right">
                                 <div className="headerins__menu">
                                     <ul>
-                                        <li className="active">
+                                                <li className="active">
                                             <a href="index.html">главная</a>
                                         </li>
                                         <li>
@@ -63,7 +121,7 @@ function Main() {
                 </header>
                 <div className="firstmain">
                     <div className="firstmain__scroll wow fadeIn" data-wow-duration="2s">
-                        <div className="firstmain__scrolltext">Scroll Down</div>
+                                <div className="firstmain__scrolltext">Scroll Down</div>
                         <div className="firstmain__scrollbottom">
                             <img src="images/scroll.png" alt=""/>
                             <span className="green"></span>
@@ -71,21 +129,36 @@ function Main() {
                             <span></span>
                         </div>
                     </div>
-                    <div className="containerm">
+                    <motion.div 
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ amount: 0.2, once: true }}
+                        className="containerm"
+                    >
                         <div className="firstmain__left">
-                            <h1 className="firstmain__title wow fadeInUp" data-wow-duration="2s">mtb coin realise
-                            </h1>
-                            <div className="firstmain__descr wow fadeInUp" data-wow-duration="2s">
+                            <motion.h1 
+                                variants={upAnimation}
+                                custom={1}
+                                className="firstmain__title wow fadeInUp" data-wow-duration="2s">mtb coin realise
+                            
+                            </motion.h1>
+                            <motion.div  
+                                variants={upAnimation}
+                                custom={2}
+                                className="firstmain__descr wow fadeInUp" data-wow-duration="2s">
                                 <p>Тут кокойто текст для текстового блока. Во всем мире растет запрос на экологически чистые экологичнве решения тут сельскохозяйственных товаров. Экологическая повестка в ближайшие 10-20 лет будут являться одним из локомотивов
                                     экономики.
                                 </p>
-                            </div>
-                            <div className="firstmain__btn wow fadeInUp" data-wow-duration="2s">
+                            </motion.div>
+                            <motion.div  
+                                variants={upAnimation}
+                                custom={3}
+                                className="firstmain__btn wow fadeInUp" data-wow-duration="2s">
                                 <a href="#" className="bluebtn">
                                     <span>Buy tokens</span>
                                     <img src="images/btn_arrow.png" alt=""/>
                                 </a>
-                            </div>
+                            </motion.div>
 
                         </div>
                         <div className="bottomblocks">
@@ -108,24 +181,43 @@ function Main() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>
-        <div className="secscreen secscreenscroll wow fadeInLeft" data-wow-duration="2s">
-            <div className="containerm">
+        <motion.div 
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ amount: 0.2, once: true }}
+            // className="secscreen secscreenscroll wow fadeInLeft" data-wow-duration="2s"
+            >
+                <motion.div 
+                variants={leftShiftAnimation}
+                className="secscreen secscreenscroll wow fadeInLeft" data-wow-duration="2s">
+            <div 
+                
+                className="containerm">
                 <div className="secscreen__inside">
                     <div className="secscreen__leftimg">
                         <img src="images/img_bg_2.png" alt=""/>
                     </div>
                     <div className="secscreen__right">
                         <div className="contents">
-                            <h2 className="contents__title wow fadeInUp" data-wow-duration="2s">SCAN QR CODE</h2>
-                            <p className="wow fadeInUp" data-wow-duration="2s">Тут кокойто текст для текстового блока. Во всем мире растет запрос на экологически чистые экологичнве решения тут сельскохозяйственных товаров. 
+                            <motion.h2
+                                variants={upAnimation}
+                                custom={1} 
+                                className="contents__title wow fadeInUp" data-wow-duration="2s">SCAN QR CODE</motion.h2>
+                            <motion.p
+                                 variants={upAnimation}
+                                 custom={2} 
+                                className="wow fadeInUp" data-wow-duration="2s">Тут кокойто текст для текстового блока. Во всем мире растет запрос на экологически чистые экологичнве решения тут сельскохозяйственных товаров. 
                             <br/> Экологическая повестка в ближайшие 10-20 лет будут являться одним из локомотивов
                                 экономики одним из локомотивов экономики.
-                            </p>
-                            <div className="contents__products wow fadeInUp" data-wow-duration="2s">
+                            </motion.p>
+                            <motion.div
+                                variants={upAnimation}
+                                custom={3} 
+                                className="contents__products wow fadeInUp" data-wow-duration="2s">
                                 <div className="contents__productitem">
                                     <div className="contents__productitemimg">
                                         <img src="images/i1.png" alt=""/>
@@ -182,14 +274,22 @@ function Main() {
                                         <div className="contents__productitemtext">Фрукты</div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
 
             </div>
-        </div>
-        <div className="best wow fadeInRight" data-wow-duration="2s">
+            </motion.div>
+        </motion.div>
+        <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.2, once: true }}
+        >
+        <motion.div 
+            variants={rightShiftAnimation}
+            className="best wow fadeInRight" data-wow-duration="2s">
             <div className="best__top wow fadeInLeft" data-wow-duration="2s">
                 <div className="best__wave">
                     <img src="images/wave.png" alt=""/>
@@ -200,10 +300,19 @@ function Main() {
                     <div className="best__inside">
                         <div className="best__left">
                             <div className="contents">
-                                <h2 className="contents__title wow fadeInUp" data-wow-duration="2s">преимущества</h2>
-                                <p className="wow fadeInUp" data-wow-duration="2s">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.
-                                </p>
-                                <div className="best__line wow fadeInUp" data-wow-duration="2s">
+                                <motion.h2 
+                                    variants={upAnimation}
+                                    custom={1}
+                                    className="contents__title wow fadeInUp" data-wow-duration="2s">преимущества</motion.h2>
+                                <motion.p 
+                                    variants={upAnimation}
+                                    custom={2}
+                                    className="wow fadeInUp" data-wow-duration="2s">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.
+                                </motion.p>
+                                <motion.div 
+                                    variants={upAnimation}
+                                    custom={3}
+                                    className="best__line wow fadeInUp" data-wow-duration="2s">
                                     <div className="best__lineimg">
                                         <img src="images/best_icon.png" alt=""/>
                                     </div>
@@ -211,8 +320,11 @@ function Main() {
                                         <div className="best__linetitle">Marketing strategies</div>
                                         <div className="best__linedescr">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
                                     </div>
-                                </div>
-                                <div className="best__line wow fadeInUp" data-wow-duration="2s">
+                                </motion.div>
+                                <motion.div 
+                                    variants={upAnimation}
+                                    custom={4}
+                                    className="best__line wow fadeInUp" data-wow-duration="2s">
                                     <div className="best__lineimg">
                                         <img src="images/best_icon.png" alt=""/>
                                     </div>
@@ -220,7 +332,7 @@ function Main() {
                                         <div className="best__linetitle">Marketing strategies</div>
                                         <div className="best__linedescr">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
                                     </div>
-                                </div>
+                                </motion.div>
                             </div>
                         </div>
                         <div className="best__right">
@@ -231,139 +343,219 @@ function Main() {
                     </div>
                 </div>
             </div>
-        </div>
-        <div className="roadmap wow fadeIn" data-wow-duration="2s">
+        </motion.div>
+        </motion.div>
+        <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.2, once: true }}
+            className="roadmap wow fadeIn" data-wow-duration="2s">
             <div className="containerm">
                 <div className="roadmap__inside">
-                    <h3 className="roadmap__titletop wow fadeInUp" data-wow-duration="2s">Roadmap</h3>
+                    <motion.h3 
+                        variants={upAnimation}
+                        custom={1}
+                        className="roadmap__titletop wow fadeInUp" data-wow-duration="2s">Roadmap</motion.h3>
 
                     <div className="roadmap__row">
-                        <div className="roadmap__item roadmap__item-blue wow fadeInUp" data-wow-duration="2s">
-                            <div className="roadmap__top">
-                                <div className="roadmap__topleft">
-                                    <div className="roadmap__date">Jun - Nov 2020</div>
-                                    <div className="roadmap__title">The Bitmin Idea is born</div>
-                                </div>
-                                <div className="roadmap__topright">
-                                    <div className="roadmap__status">completed</div>
-                                </div>
-                            </div>
-                            <div className="roadmap__bottom">
-                                Development of points based loyalty system CryptoMailCoin designed to blockchain technology.
-                            </div>
-                            <div className="roadmap__dot"></div>
-                        </div>
-                        <div className="roadmap__item roadmap__item-blue wow fadeInUp" data-wow-duration="2s">
-                            <div className="roadmap__top">
-                                <div className="roadmap__topleft">
-                                    <div className="roadmap__date">Dec 2020 - Feb 2021</div>
-                                    <div className="roadmap__title">Exchange Listing</div>
-                                </div>
-                                <div className="roadmap__topright">
-                                    <div className="roadmap__status">completed</div>
-                                </div>
-                            </div>
-                            <div className="roadmap__bottom">
-                                We are already in contact with leading crypto exchanges to get CryptoMailCoin listed. After the ITS ends the digital currency will be available for public trading.
-                            </div>
-                            <div className="roadmap__dot"></div>
-                        </div>
-                        <div className="roadmap__item roadmap__item-green wow fadeInUp" data-wow-duration="2s">
-                            <div className="roadmap__top">
-                                <div className="roadmap__topleft">
-                                    <div className="roadmap__date">May - Jul 2021</div>
-                                    <div className="roadmap__title">Full-functioning CryptoMail</div>
-                                </div>
-                                <div className="roadmap__topright">
-                                    <div className="roadmap__status">current stage</div>
-                                </div>
-                            </div>
-                            <div className="roadmap__bottom">
-                                The full-functioning rewards and loyalty platform cryptowallet tied to the loyalty program of BITMIN.
-                            </div>
-                            <div className="roadmap__dot"></div>
-                        </div>
-                        <div className="roadmap__item wow fadeInUp" data-wow-duration="2s">
-                            <div className="roadmap__top">
-                                <div className="roadmap__topleft">
-                                    <div className="roadmap__date">Sep - Nov 2021</div>
-                                    <div className="roadmap__title">Customer’s Mobile app with crypto-wallet</div>
-                                </div>
-                                <div className="roadmap__topright">
-                                    <div className="roadmap__status"></div>
-                                </div>
-                            </div>
-                            <div className="roadmap__bottom">
-                                We will launch a desktop and mobile wallet for CryptoMailCoin
-                            </div>
-                            <div className="roadmap__dot"></div>
-                        </div>
-                        <div className="roadmap__item wow fadeInUp" data-wow-duration="2s">
-                            <div className="roadmap__top">
-                                <div className="roadmap__topleft">
-                                    <div className="roadmap__date">Dec 2021 - Jul 2021</div>
-                                    <div className="roadmap__title">Beta Test Launch
+                        <motion.div 
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ amount: 0.2, once: true }}
+                        >
+                            <motion.div 
+                                variants={upAnimation}
+                                custom={1}
+                                className="roadmap__item roadmap__item-blue wow fadeInUp" data-wow-duration="2s">
+                                <div className="roadmap__top">
+                                    <div className="roadmap__topleft">
+                                        <div className="roadmap__date">Jun - Nov 2020</div>
+                                        <div className="roadmap__title">The Bitmin Idea is born</div>
+                                    </div>
+                                    <div className="roadmap__topright">
+                                        <div className="roadmap__status">completed</div>
                                     </div>
                                 </div>
-                                <div className="roadmap__topright">
-                                    <div className="roadmap__status"></div>
+                                <div className="roadmap__bottom">
+                                    Development of points based loyalty system CryptoMailCoin designed to blockchain technology.
                                 </div>
-                            </div>
-                            <div className="roadmap__bottom">
-                                The beta test of the payment solution will be ready for release. The beta version will become available to
-                            </div>
-                            <div className="roadmap__dot"></div>
-                        </div>
-                        <div className="roadmap__item wow fadeInUp" data-wow-duration="2s">
-                            <div className="roadmap__top">
-                                <div className="roadmap__topleft">
-                                    <div className="roadmap__date">Sep 2021 - May 2021</div>
-                                    <div className="roadmap__title">Bitmin Payment Solution Release</div>
-                                </div>
-                                <div className="roadmap__topright">
-                                    <div className="roadmap__status"></div>
-                                </div>
-                            </div>
-                            <div className="roadmap__bottom">
-                                The CryptoMailCoin payment solution platform will be launched. By this point, we will have made additional agreements with top entertainment industry businesses to begin using CryptoMailCoin.
-                            </div>
-                            <div className="roadmap__dot"></div>
-                        </div>
-                        <div className="roadmap__item wow fadeInUp" data-wow-duration="2s">
-                            <div className="roadmap__top">
-                                <div className="roadmap__topleft">
-                                    <div className="roadmap__date">Jul 2021</div>
-                                    <div className="roadmap__title">Expand Client Base
+                                <div className="roadmap__dot"></div>
+                            </motion.div>
+                        </motion.div>
+                        {/* <motion.div 
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ amount: 0.2, once: true }}
+                        > */}
+                            <motion.div 
+                                variants={upAnimation}
+                                custom={1}
+                                className="roadmap__item roadmap__item-blue wow fadeInUp" data-wow-duration="2s">
+                                <div className="roadmap__top">
+                                    <div className="roadmap__topleft">
+                                        <div className="roadmap__date">Dec 2020 - Feb 2021</div>
+                                        <div className="roadmap__title">Exchange Listing</div>
+                                    </div>
+                                    <div className="roadmap__topright">
+                                        <div className="roadmap__status">completed</div>
                                     </div>
                                 </div>
-                                <div className="roadmap__topright">
-                                    <div className="roadmap__status"></div>
+                                <div className="roadmap__bottom">
+                                    We are already in contact with leading crypto exchanges to get CryptoMailCoin listed. After the ITS ends the digital currency will be available for public trading.
                                 </div>
-                            </div>
-                            <div className="roadmap__bottom">
-                                Our aim is to have partnered with a minimum of 200 businesses and individuals from the entertainment industry.
-                            </div>
-                            <div className="roadmap__dot"></div>
-                        </div>
-                        <div className="roadmap__item wow fadeInUp" data-wow-duration="2s">
-                            <div className="roadmap__top">
-                                <div className="roadmap__topleft">
-                                    <div className="roadmap__date">Dec 2021</div>
-                                    <div className="roadmap__title">Market Share Grows</div>
+                                <div className="roadmap__dot"></div>
+                            </motion.div>
+                        {/* </motion.div> */}
+                        {/* <motion.div 
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ amount: 0.2, once: true }}
+                        > */}
+                            <motion.div 
+                                variants={upAnimation}
+                                custom={1}
+                                className="roadmap__item roadmap__item-green wow fadeInUp" data-wow-duration="2s">
+                                <div className="roadmap__top">
+                                    <div className="roadmap__topleft">
+                                        <div className="roadmap__date">May - Jul 2021</div>
+                                        <div className="roadmap__title">Full-functioning CryptoMail</div>
+                                    </div>
+                                    <div className="roadmap__topright">
+                                        <div className="roadmap__status">current stage</div>
+                                    </div>
                                 </div>
-                                <div className="roadmap__topright">
-                                    <div className="roadmap__status"></div>
+                                <div className="roadmap__bottom">
+                                    The full-functioning rewards and loyalty platform cryptowallet tied to the loyalty program of BITMIN.
                                 </div>
-                            </div>
-                            <div className="roadmap__bottom">
-                                The beta test of the payment solution will be ready for release. The beta version will become available to
-                            </div>
-                            <div className="roadmap__dot"></div>
-                        </div>
+                                <div className="roadmap__dot"></div>
+                            </motion.div>
+                        {/* </motion.div> */}
+                        {/* <motion.div 
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ amount: 0.2, once: true }}
+                        > */}
+                            <motion.div 
+                                variants={upAnimation}
+                                custom={1}
+                                className="roadmap__item wow fadeInUp" data-wow-duration="2s">
+                                <div className="roadmap__top">
+                                    <div className="roadmap__topleft">
+                                        <div className="roadmap__date">Sep - Nov 2021</div>
+                                        <div className="roadmap__title">Customer’s Mobile app with crypto-wallet</div>
+                                    </div>
+                                    <div className="roadmap__topright">
+                                        <div className="roadmap__status"></div>
+                                    </div>
+                                </div>
+                                <div className="roadmap__bottom">
+                                    We will launch a desktop and mobile wallet for CryptoMailCoin
+                                </div>
+                                <div className="roadmap__dot"></div>
+                            </motion.div>
+                        {/* </motion.div> */}
+                        {/* <motion.div 
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ amount: 0.2, once: true }}
+                        > */}
+                            <motion.div 
+                                variants={upAnimation}
+                                custom={1}
+                                className="roadmap__item wow fadeInUp" data-wow-duration="2s">
+                                <div className="roadmap__top">
+                                    <div className="roadmap__topleft">
+                                        <div className="roadmap__date">Dec 2021 - Jul 2021</div>
+                                        <div className="roadmap__title">Beta Test Launch
+                                        </div>
+                                    </div>
+                                    <div className="roadmap__topright">
+                                        <div className="roadmap__status"></div>
+                                    </div>
+                                </div>
+                                <div className="roadmap__bottom">
+                                    The beta test of the payment solution will be ready for release. The beta version will become available to
+                                </div>
+                                <div className="roadmap__dot"></div>
+                            </motion.div>
+                        {/* </motion.div> */}
+                        {/* <motion.div 
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ amount: 0.2, once: true }}
+                        > */}
+                            <motion.div 
+                                variants={upAnimation}
+                                custom={1}
+                                className="roadmap__item wow fadeInUp" data-wow-duration="2s">
+                                <div className="roadmap__top">
+                                    <div className="roadmap__topleft">
+                                        <div className="roadmap__date">Sep 2021 - May 2021</div>
+                                        <div className="roadmap__title">Bitmin Payment Solution Release</div>
+                                    </div>
+                                    <div className="roadmap__topright">
+                                        <div className="roadmap__status"></div>
+                                    </div>
+                                </div>
+                                <div className="roadmap__bottom">
+                                    The CryptoMailCoin payment solution platform will be launched. By this point, we will have made additional agreements with top entertainment industry businesses to begin using CryptoMailCoin.
+                                </div>
+                                <div className="roadmap__dot"></div>
+                            </motion.div>
+                        {/* </motion.div> */}
+                        {/* <motion.div 
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ amount: 0.2, once: true }}
+                        > */}
+                            <motion.div 
+                                variants={upAnimation}
+                                custom={1}
+                                className="roadmap__item wow fadeInUp" data-wow-duration="2s">
+                                <div className="roadmap__top">
+                                    <div className="roadmap__topleft">
+                                        <div className="roadmap__date">Jul 2021</div>
+                                        <div className="roadmap__title">Expand Client Base
+                                        </div>
+                                    </div>
+                                    <div className="roadmap__topright">
+                                        <div className="roadmap__status"></div>
+                                    </div>
+                                </div>
+                                <div className="roadmap__bottom">
+                                    Our aim is to have partnered with a minimum of 200 businesses and individuals from the entertainment industry.
+                                </div>
+                                <div className="roadmap__dot"></div>
+                            </motion.div>
+                        {/* </motion.div> */}
+                        {/* <motion.div 
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ amount: 0.2, once: true }}
+                        > */}
+                            <motion.div 
+                                variants={upAnimation}
+                                custom={1}
+                                className="roadmap__item wow fadeInUp" data-wow-duration="2s">
+                                <div className="roadmap__top">
+                                    <div className="roadmap__topleft">
+                                        <div className="roadmap__date">Dec 2021</div>
+                                        <div className="roadmap__title">Market Share Grows</div>
+                                    </div>
+                                    <div className="roadmap__topright">
+                                        <div className="roadmap__status"></div>
+                                    </div>
+                                </div>
+                                <div className="roadmap__bottom">
+                                    The beta test of the payment solution will be ready for release. The beta version will become available to
+                                </div>
+                                <div className="roadmap__dot"></div>
+                            </motion.div>
+                        {/* </motion.div> */}
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
         <div className="footerbg">
             <div className="team">
                 <div className="containerm">
@@ -583,7 +775,7 @@ function Main() {
                 </div>
             </footer>
         </div>
-    </div>
+    </motion.div>
      
     </>
   );
