@@ -1,6 +1,17 @@
 import React from 'react';
 import './css/style.scss';
 import { motion } from "framer-motion"
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 
 const upAnimation = {
     hidden:(custom: any) => ({
@@ -13,6 +24,7 @@ const upAnimation = {
         opacity: 1,
         transition: { 
             delay: (custom - 0.8) * 0.3,
+            // delayChildren: 0.8,
             duration: 1 
         },
 
@@ -51,6 +63,23 @@ const rightShiftAnimation = {
     },
 }
 
+const upSingleAnimation = {
+    hidden:{
+        y: 200,
+        opacity: 0,
+
+    },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: { 
+            delay: 0,
+            duration: 1.5 
+        },
+
+    },
+}
+
 
 function Main() {
   return (
@@ -67,9 +96,15 @@ function Main() {
                                 <div className="headerins__logo">
                                 <a href="index.html">
                                     <motion.img 
-                                        animate = {{rotateX: 360, transition: { 
-                                            duration: 1.5 
-                                        },}}
+                                        animate = {{rotateX: 360, }}
+                                        transition= {{ 
+                                            duration: 2,
+                                            repeat: Infinity,
+                                            repeatDelay: 3,
+                                            repeatType: 'reverse',
+                                            type: ''
+                                        }}
+                                        
                                         src="images/logo.png" alt=""/>
                                 </a>
                             </div>
@@ -113,9 +148,16 @@ function Main() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="hamburger">
+                            <motion.div 
+                                whileHover={{
+                                    scale: 1.3
+                                }}
+                                whileTap={{
+                                    background: 'lightblue'
+                                }}
+                                className="hamburger">
                                 <span></span><span></span><span></span>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </header>
@@ -556,224 +598,279 @@ function Main() {
                 </div>
             </div>
         </motion.div>
+
+
+       
+
         <div className="footerbg">
-            <div className="team">
-                <div className="containerm">
-                    <div className="team__inside">
-                        <h2 className="team__title wow fadeInUp" data-wow-duration="2s">our team</h2>
-                        <p className="wow fadeInUp" data-wow-duration="2s">Lorem Ipsum is simply dummy text of the printing and typesetting </p>
-                        <div className="team__slider wow fadeInUp" data-wow-duration="2s">
-                            <div className="team__item">
-                                <div className="team__iteminside">
-                                    <div className="team__img">
-                                        <div className="team__photo" style={{backgroundImage: "url(images/team1.jpg)"}}></div>
-                                    </div>
-                                    <div className="team__name">John Karony</div>
-                                    <div className="team__special">Super programmer</div>
-                                    <div className="team__social">
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/twitter.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/linkedin.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/fb.png" alt=""/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="team__item">
-                                <div className="team__iteminside">
-                                    <div className="team__img">
-                                        <div className="team__photo" style={{backgroundImage: "url(images/team2.jpg)"}}></div>
-                                    </div>
-                                    <div className="team__name">emiliya klark</div>
-                                    <div className="team__special">Super programmer</div>
-                                    <div className="team__social">
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/twitter.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/linkedin.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/fb.png" alt=""/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="team__item">
-                                <div className="team__iteminside">
-                                    <div className="team__img">
-                                        <div className="team__photo" style={{backgroundImage: "url(images/team3.jpg);"}}></div>
-                                    </div>
-                                    <div className="team__name">jessika Karony</div>
-                                    <div className="team__special">Super programmer</div>
-                                    <div className="team__social">
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/twitter.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/linkedin.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/fb.png" alt=""/>
-                                            </a>
+            <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.2, once: true }}
+            >
+                <motion.div 
+                    variants={upSingleAnimation}
+                    className="team">
+                    <div className="containerm">
+                        <div className="team__inside">
+                            <h2 className="team__title wow fadeInUp" data-wow-duration="2s">our team</h2>
+                            <p className="wow fadeInUp" data-wow-duration="2s">Lorem Ipsum is simply dummy text of the printing and typesetting </p>
+                            <div className="team__slider wow fadeInUp" data-wow-duration="2s">
+                            <Swiper
+                                breakpoints={{
+                                    // when window width is >= 640px
+                                    640: {
+                                    // width: 640,
+                                    slidesPerView: 1,
+                                    },
+                                    // when window width is >= 768px
+                                    768: {
+                                    // width: 768,
+                                    slidesPerView: 3,
+                                    },
+                                }}
+                                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                spaceBetween={50}
+                                // slidesPerView={3}
+                                navigation
+                                pagination={{ clickable: true,  }}
+                                // scrollbar={{ draggable: true }}
+                                // onSwiper={(swiper) => console.log(swiper)}
+                                // onSlideChange={() => console.log('slide change')}
+                            >
+                                <SwiperSlide>
+                                    <div className="team__item">
+                                        <div className="team__iteminside">
+                                            <div className="team__img">
+                                                <div className="team__photo" style={{backgroundImage: "url(images/team1.jpg)"}}></div>
+                                            </div>
+                                            <div className="team__name">John Karony</div>
+                                            <div className="team__special">Super programmer</div>
+                                            <div className="team__social">
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/twitter.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/linkedin.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/fb.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="team__item">
-                                <div className="team__iteminside">
-                                    <div className="team__img">
-                                        <div className="team__photo" style={{backgroundImage: "url(images/team1.jpg)"}}></div>
-                                    </div>
-                                    <div className="team__name">John Karony</div>
-                                    <div className="team__special">Super programmer</div>
-                                    <div className="team__social">
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/twitter.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/linkedin.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/fb.png" alt=""/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="team__item">
-                                <div className="team__iteminside">
-                                    <div className="team__img">
-                                        <div className="team__photo" style={{backgroundImage: "url(images/team2.jpg)"}}></div>
-                                    </div>
-                                    <div className="team__name">emiliya klark</div>
-                                    <div className="team__special">Super programmer</div>
-                                    <div className="team__social">
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/twitter.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/linkedin.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/fb.png" alt=""/>
-                                            </a>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="team__item">
+                                        <div className="team__iteminside">
+                                            <div className="team__img">
+                                                <div className="team__photo" style={{backgroundImage: "url(images/team2.jpg)"}}></div>
+                                            </div>
+                                            <div className="team__name">emiliya klark</div>
+                                            <div className="team__special">Super programmer</div>
+                                            <div className="team__social">
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/twitter.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/linkedin.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/fb.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="team__item">
-                                <div className="team__iteminside">
-                                    <div className="team__img">
-                                        <div className="team__photo" style={{backgroundImage: "url(images/team3.jpg)"}}></div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="team__item">
+                                        <div className="team__iteminside">
+                                            <div className="team__img">
+                                                <div className="team__photo" style={{backgroundImage: "url(images/team3.jpg)"}}></div>
+                                            </div>
+                                            <div className="team__name">jessika Karony</div>
+                                            <div className="team__special">Super programmer</div>
+                                            <div className="team__social">
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/twitter.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/linkedin.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/fb.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="team__name">jessika Karony</div>
-                                    <div className="team__special">Super programmer</div>
-                                    <div className="team__social">
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/twitter.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/linkedin.png" alt=""/>
-                                            </a>
-                                        </div>
-                                        <div className="team__solialitem">
-                                            <a href="#" target="_blank">
-                                                <img src="images/fb.png" alt=""/>
-                                            </a>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="team__item">
+                                        <div className="team__iteminside">
+                                            <div className="team__img">
+                                                <div className="team__photo" style={{backgroundImage: "url(images/team1.jpg)"}}></div>
+                                            </div>
+                                            <div className="team__name">John Karony</div>
+                                            <div className="team__special">Super programmer</div>
+                                            <div className="team__social">
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/twitter.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/linkedin.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/fb.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <footer className="footer ">
-                <div className="containerm">
-                    <div className="footer__top wow fadeInUp" data-wow-duration="2s">
-                        <div className="footer__left">
-                            <div className="footer__title">About us</div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
-                        </div>
-                        <div className="footer__menu">
-                            <div className="footer__title">Social</div>
-                            <div className="footer__nav">
-                                <ul>
-                                    <li>
-                                        <a target="_blank" href="#">Facebook</a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" href="#">Twitter</a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" href="#">Instagram</a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" href="#">LinkedIn</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="footer__menu">
-                            <div className="footer__title">Resources</div>
-                            <div className="footer__nav">
-                                <ul>
-                                    <li>
-                                        <a href="#">Home</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Whitepapers</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Markets</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Buy now</a>
-                                    </li>
-                                </ul>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="team__item">
+                                        <div className="team__iteminside">
+                                            <div className="team__img">
+                                                <div className="team__photo" style={{backgroundImage: "url(images/team2.jpg)"}}></div>
+                                            </div>
+                                            <div className="team__name">emiliya klark</div>
+                                            <div className="team__special">Super programmer</div>
+                                            <div className="team__social">
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/twitter.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/linkedin.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/fb.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="team__item">
+                                        <div className="team__iteminside">
+                                            <div className="team__img">
+                                                <div className="team__photo" style={{backgroundImage: "url(images/team3.jpg)"}}></div>
+                                            </div>
+                                            <div className="team__name">jessika Karony</div>
+                                            <div className="team__special">Super programmer</div>
+                                            <div className="team__social">
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/twitter.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/linkedin.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div className="team__solialitem">
+                                                    <a href="#" target="_blank">
+                                                        <img src="images/fb.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            </Swiper>
                             </div>
                         </div>
                     </div>
-                    <div className="footer__copyr wow fadeInUp" data-wow-duration="2s">
-                        <div className="footer__copyttext">Copyright © 2021 Safemoon LLC. | All Rights Reserved</div>
+                </motion.div>
+            </motion.div>
+            <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.2, once: true }}
+            > 
+                <motion.footer
+                    variants={leftShiftAnimation}
+                     className="footer ">
+                    <div className="containerm">
+                        <div className="footer__top wow fadeInUp" data-wow-duration="2s">
+                            <div className="footer__left">
+                                <div className="footer__title">About us</div>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+                            </div>
+                            <div className="footer__menu">
+                                <div className="footer__title">Social</div>
+                                <div className="footer__nav">
+                                    <ul>
+                                        <li>
+                                            <a target="_blank" href="#">Facebook</a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="#">Twitter</a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="#">Instagram</a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="#">LinkedIn</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="footer__menu">
+                                <div className="footer__title">Resources</div>
+                                <div className="footer__nav">
+                                    <ul>
+                                        <li>
+                                            <a href="#">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Whitepapers</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Markets</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Buy now</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="footer__copyr wow fadeInUp" data-wow-duration="2s">
+                            <div className="footer__copyttext">Copyright © 2021 Safemoon LLC. | All Rights Reserved</div>
+                        </div>
                     </div>
-                </div>
-            </footer>
+                </motion.footer>
+            </motion.div>
         </div>
     </motion.div>
      
