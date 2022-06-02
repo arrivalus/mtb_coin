@@ -190,11 +190,11 @@ h1 {
 h2 {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 80px;
+  font-weight: 900;
   text-transform: uppercase;
   color: #4ea2d7;
   position: relative;
   margin-bottom: 15px;
-  font-weight: 900;
 }
 
 p {
@@ -224,7 +224,7 @@ p {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 9999999;
+  z-index: 10;
   background-color: transparent;
   padding: 10px 0;
   transition: all 0.3s ease-in-out;
@@ -1357,6 +1357,8 @@ p {
   transition-property: all;
 }
 .firstmain__title {
+  font-size: 150px;
+  font-weight: 900;
   span {
     font-size: 115px;
     display: block;
@@ -1368,6 +1370,14 @@ p {
   //     @include beforescroll(2s);
 
   // }
+}
+.contents__title {
+  font-size: 80px;
+  font-weight: 900;
+}
+.team__title {
+  font-size: 80px;
+  font-weight: 900;
 }
 
 .buynow {
@@ -1544,7 +1554,8 @@ p {
   .firstmain__scrolltext {
     display: none;
   }
-  h1 {
+  h1,
+  .firstmain__title {
     font-size: 140px;
   }
   .headerins__menu ul a {
@@ -1583,7 +1594,8 @@ p {
 }
 
 @media screen and (max-width: 1300px) {
-  h1 {
+  h1,
+  .firstmain__title {
     font-size: 120px;
   }
   .headerins__langvisible {
@@ -1608,7 +1620,9 @@ p {
   .firstmain__thingreen {
     margin-bottom: 35px;
   }
-  h2 {
+  h2,
+  .contents__title,
+  .team__title {
     font-size: 65px;
   }
   .header {
@@ -1756,10 +1770,13 @@ p {
     padding-left: 15px;
     padding-right: 15px;
   }
-  h1 {
+  h1,
+  .firstmain__title {
     font-size: 110px;
   }
-  h2 {
+  h2,
+  .contents__title,
+  .team__title {
     font-size: 60px;
   }
   .roadmap__item {
@@ -1855,7 +1872,8 @@ p {
       max-width: 500px;
     }
   }
-  h1 {
+  h1,
+  .firstmain__title {
     font-size: 85px;
   }
   .firstmain__descr p {
@@ -1882,7 +1900,9 @@ p {
   .best__top {
     top: 0;
   }
-  h2 {
+  h2,
+  .contents__title,
+  .team__title {
     font-size: 50px;
   }
   .roadmap__titletop {
@@ -1900,6 +1920,10 @@ p {
   }
   .roadmap__item {
     padding: 25px 15px;
+  }
+  .contents__title {
+    font-size: 150px;
+    font-weight: 900;
   }
   .contents__title:before {
     left: -20px;
@@ -2031,11 +2055,13 @@ p {
   }
   .firstmain__title {
     // max-width: 210px;
+    // font-size: 120px !important;
   }
   .mainscreen {
     padding-top: 130px;
   }
-  h1 {
+  h1,
+  .firstmain__title {
     font-size: 60px;
   }
   .firstmain__left {
@@ -2044,7 +2070,9 @@ p {
   .bottomblocks {
     display: block;
   }
-  h2 {
+  h2,
+  .contents__title,
+  .team__title {
     font-size: 41px;
   }
   p {
@@ -2191,7 +2219,8 @@ p {
 }
 
 @media screen and (max-width: 460px) {
-  h1 {
+  h1,
+  .firstmain__title {
     font-size: 52px;
   }
   .firstmainmarket {
@@ -2240,7 +2269,9 @@ p {
       max-width: 45px;
     }
   }
-  h2 {
+  h2,
+  .contents__title,
+  .team__title {
     font-size: 36px;
   }
   .header.fixed .headerins__logo a img {
@@ -2252,7 +2283,8 @@ p {
 }
 
 @media screen and (max-width: 410px) {
-  h1 {
+  h1,
+  .firstmain__title {
     font-size: 48px;
   }
   .firstmain__descr p {
@@ -2262,6 +2294,8 @@ p {
     margin-bottom: 25px;
   }
   h2,
+  .contents__title,
+  .team__title,
   .roadmap__titletop {
     font-size: 33px;
   }
@@ -2303,11 +2337,13 @@ p {
   .mainscreen {
     background-size: 110%;
   }
-  h1 {
+  h1.firstmain__title {
     font-size: 50px;
   }
   .firstmain__title {
     max-width: 185px;
+    // font-size: 50px;
+    // font-size: 120px !important;
   }
   .firstmain__thin {
     font-size: 15px;
@@ -2409,5 +2445,50 @@ p {
   }
   .discl__inside {
     font-size: 12px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
+
+.cont {
+  position: relative;
+  margin: 0 auto;
+  z-index: 10;
+  top: 100px;
+  left: 15%;
+}
+/* ================================ */
+.mouse {
+  border: 2px solid rgb(43, 150, 226);
+  border-radius: 13px;
+  bottom: 40px;
+  display: block;
+  height: 48px;
+  left: 50%;
+  margin: 0 auto 0 -26px;
+  position: absolute;
+  width: 26px;
+}
+.mouse span {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-name: scroll;
+  background: none repeat scroll 0 0 rgb(30, 195, 187);
+  border: 4px solid transparent;
+  border-radius: 4px;
+  display: block;
+  height: 4px;
+  margin: 6px auto;
+  width: 4px;
+}
+@keyframes scroll {
+  20% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
   }
 }

@@ -12,6 +12,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import Header from "./Header";
+import { Heading } from "@chakra-ui/react";
+
+import { Link, animateScroll as scroll, Element } from "react-scroll";
 
 const upAnimation = {
   hidden: (custom: any) => ({
@@ -72,6 +75,10 @@ const upSingleAnimation = {
       duration: 1.5,
     },
   },
+};
+
+const scrollToTop = () => {
+  scroll.scrollToTop();
 };
 
 function Main() {
@@ -158,14 +165,60 @@ function Main() {
                         </div>
                     </div>
                 </header> */}
+
             <div className="firstmain">
+              {/* <Link to="section1">Link</Link> */}
+              {/* <button onClick={scrollToTop}>Scroll UP</button>
+
+              <Link
+                // activeClass="active"
+                to="secondInsideContainer"
+                spy={true}
+                smooth={true}
+                duration={250}
+                // containerId="containerElement"
+                style={{ display: "inline-block", margin: "20px" }}
+              >
+                Go to second element inside container
+              </Link> */}
+
               <div
                 className="firstmain__scroll wow fadeIn"
                 data-wow-duration="2s"
               >
-                <div className="firstmain__scrolltext">Scroll Down</div>
+                <div className="firstmain__scrolltext">
+                  <Link
+                    // activeClass="active"
+                    to="secondInsideContainer"
+                    spy={true}
+                    smooth={true}
+                    duration={250}
+                    // containerId="containerElement"
+                    // style={{ display: "inline-block", margin: "20px" }}
+                  >
+                    Scroll Down
+                    <div className="cont">
+                      <div className="mouse">
+                        <span></span>
+                      </div>
+                    </div>
+                  </Link>
+                  {/* Scroll Down */}
+                  {/* <div className="cont">
+                    <div className="mouse">
+                      <span></span>
+                    </div>
+                  </div> */}
+                </div>
+
                 <div className="firstmain__scrollbottom">
                   <img src="images/scroll.png" alt="" />
+                  {/* <div className="cont">
+                    <div className="mouse">
+                      <span></span>
+                    </div>
+                  </div> */}
+
                   <span className="green"></span>
                   <span></span>
                   <span></span>
@@ -182,9 +235,12 @@ function Main() {
                     variants={upAnimation}
                     custom={1}
                     className="firstmain__title wow fadeInUp"
+                    // style={{ fontSize: "120px", fontWeight: "900" }}
                     data-wow-duration="2s"
                   >
+                    {/* <Heading as="h1"> */}
                     mtb coin realise
+                    {/* </Heading> */}
                   </motion.h1>
                   <motion.div
                     variants={upAnimation}
@@ -249,6 +305,16 @@ function Main() {
             </div>
           </div>
         </div>
+
+        <Element
+          name="secondInsideContainer"
+          // style={{
+          //   marginBottom: "200px",
+          // }}
+        >
+          second element inside container
+        </Element>
+
         <motion.div
           initial="hidden"
           whileInView="visible"
