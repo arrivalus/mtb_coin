@@ -86,7 +86,7 @@ function Main() {
   const offSetY = [0, 150];
   const ref: any = useRef();
   const { scrollYProgress } = useElementScroll(ref);
-  const [scrollItems, setScrollItems] = useState<string[]>(['', 'green', 'green', 'green', ''])
+  const [scrollItems, setScrollItems] = useState<string[]>(['green', '', '', '', ''])
   return (
     <div ref={ref}>
       <motion.div initial="hidden" whileInView="visible" className="wrapper" >
@@ -118,82 +118,70 @@ function Main() {
               <div
                 className="firstmain__scroll wow fadeIn"
                 data-wow-duration="2s"
-              // style = {{top: {scrollY}}}
               // style={{ scaleY: scrollYProgress }}
               >
                 <div className="firstmain__scrolltext" >
-                    Scroll Down
-                    <div className="mouse">
-                      <span></span>
-                    </div>
+                  Scroll Down
+                  <div className="mouse">
+                    <span></span>
+                  </div>
                   {/* </Link> */}
                 </div>
 
                 <div className="firstmain__scrollbottom">
                   <img src="images/scroll.png" alt="" />
-                  {/* <span className="green"></span> */}
-                  <span className={scrollItems[0]}>
-                    <Link
-                      activeClass="active"
-                      to="0Container"
-                      spy={true}
-                      smooth={true}
-                      duration={250}
-                      onClick={() => setScrollItems(['green', '', '', '', ''])}
+                  <Link
+                    activeClass="active"
+                    to="0Container"
+                    spy={true}
+                    smooth={true}
+                    duration={250}
+                    onClick={() => setScrollItems(['green', '', '', '', ''])}>
+                    <span className={scrollItems[0]}></span>
+                  </Link>
+                  <Link
+                    activeClass="active"
+                    to="1Container"
+                    spy={true}
+                    smooth={true}
+                    duration={250}
+                    onClick={() => setScrollItems(['', 'green', '', '', ''])}
 
-                    />
-                  </span>
-                  <span className={scrollItems[1]}>
-                    <Link
-                      activeClass="active"
-                      to="1Container"
-                      spy={true}
-                      smooth={true}
-                      duration={250}
-                      onClick={() => setScrollItems(['', 'green', '', '', ''])}
+                  >
+                    <span className={scrollItems[1]}></span>
 
-                    >
-                      <span ></span>
+                  </Link>
+                  <Link
+                    activeClass="active"
+                    to="2Container"
+                    spy={true}
+                    smooth={true}
+                    duration={250}
+                    onClick={() => setScrollItems(['', '', 'green', '', ''])}
 
-                    </Link>
-                  </span>
-                  <span className={scrollItems[2]}>
-                    <Link
-                      activeClass="active"
-                      to="2Container"
-                      spy={true}
-                      smooth={true}
-                      duration={250}
-                      onClick={() => setScrollItems(['', '', 'green', '', ''])}
-
-                    >
-                      <span></span>
-                    </Link>
-                  </span>
-                  <span className={scrollItems[3]}>
-                    <Link
-                      activeClass="active"
-                      to="3Container"
-                      spy={true}
-                      smooth={true}
-                      duration={250}
-                      onClick={() => setScrollItems(['', '', '', 'green', ''])}
-                    >
-                      <span></span>
-                    </Link>
-                  </span>
-                  <span className={scrollItems[4]}>
-                    <Link
-                      activeClass="active"
-                      to="4Container"
-                      spy={true}
-                      smooth={true}
-                      duration={250}
-                      onClick={() => setScrollItems(['', '', '', '', 'green'])}
-                    >
-                      <span></span>
-                    </Link>
-                  </span>
+                  >
+                    <span className={scrollItems[2]}></span>
+                  </Link>
+                  <Link
+                    activeClass="active"
+                    to="3Container"
+                    spy={true}
+                    smooth={true}
+                    duration={250}
+                    onClick={() => setScrollItems(['', '', '', 'green', ''])}
+                  >
+                    <span className={scrollItems[3]}></span>
+                  </Link>
+                  <Link
+                    activeClass="active"
+                    to="4Container"
+                    spy={true}
+                    smooth={true}
+                    duration={250}
+                    onClick={() => setScrollItems(['', '', '', '', 'green'])}
+                  >
+                    <span className={scrollItems[4]}></span>
+                  </Link>
                 </div>
               </div>
               <motion.div
@@ -207,12 +195,9 @@ function Main() {
                     variants={upAnimation}
                     custom={1}
                     className="firstmain__title wow fadeInUp"
-                    // style={{ fontSize: "120px", fontWeight: "900" }}
                     data-wow-duration="2s"
                   >
-                    {/* <Heading as="h1"> */}
                     mtb coin realise
-                    {/* </Heading> */}
                   </motion.h1>
                   <motion.div
                     variants={upAnimation}
@@ -287,7 +272,7 @@ function Main() {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.2, once: true }}
-          // className="secscreen secscreenscroll wow fadeInLeft" data-wow-duration="2s"
+        // className="secscreen secscreenscroll wow fadeInLeft" data-wow-duration="2s"
         >
           <motion.div
             variants={leftShiftAnimation}
