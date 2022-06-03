@@ -486,7 +486,7 @@ p {
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
-      margin-top: 10px;
+      margin-top: 20px;
       width: 8px;
       height: 8px;
       margin-left: auto;
@@ -502,7 +502,7 @@ p {
   &__scroll {
     position: absolute;
     left: 15px;
-    bottom: 25%;
+    bottom: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -517,12 +517,12 @@ p {
         img {
           bottom: -25px;
         }
-        span {
-          background-color: #6cd5d1;
-          &.green {
-            opacity: 0;
-          }
-        }
+        // span {
+        //   background-color: #6cd5d1;
+        //   &.green {
+        //     opacity: 0;
+        //   }
+        // }
       }
     }
   }
@@ -1552,7 +1552,7 @@ p {
 
 @media screen and (max-width: 1600px) {
   .firstmain__scrolltext {
-    display: none;
+    // display: none;
   }
   h1,
   .firstmain__title {
@@ -1611,7 +1611,7 @@ p {
     overflow: auto;
   }
   .firstmain__scroll {
-    display: none;
+    // display: none;
   }
   .mainscreen {
     background-size: 100%;
@@ -2461,13 +2461,14 @@ p {
 .mouse {
   border: 2px solid rgb(43, 150, 226);
   border-radius: 13px;
-  bottom: 40px;
+  bottom: -57px;
   display: block;
   height: 48px;
   left: 50%;
-  margin: 0 auto 0 -26px;
+  margin: 0 auto 0 -13px;
   position: absolute;
   width: 26px;
+  z-index: 10;
 }
 .mouse span {
   animation-duration: 1s;

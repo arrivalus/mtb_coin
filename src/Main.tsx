@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./css/style.scss";
-import { motion, useTransform, useViewportScroll } from "framer-motion";
+import { motion, useElementScroll, useTransform, useViewportScroll } from "framer-motion";
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
@@ -84,9 +84,12 @@ const scrollToTop = () => {
 function Main() {
   const { scrollY } = useViewportScroll();
   const offSetY = [0, 150];
+  const ref: any = useRef();
+  const { scrollYProgress } = useElementScroll(ref);
+  const [scrollItems, setScrollItems] = useState<string[]>(['', 'green', 'green', 'green', ''])
   return (
-    <>
-      <motion.div initial="hidden" whileInView="visible" className="wrapper">
+    <div ref={ref}>
+      <motion.div initial="hidden" whileInView="visible" className="wrapper" >
         <div
           className="mainscreen wow fadeIn"
           data-wow-duration="2s"
@@ -94,134 +97,103 @@ function Main() {
         >
           <div className="contfoescroll">
             <Header offSetY={offSetY} scrollY={scrollY} />
-            {/* <header className="header">
-                    <div className="containerm">
-                        <div className="headerins">
-                                <div className="headerins__logo">
-                                <a href="index.html">
-                                    <motion.img 
-                                        animate = {{rotateX: 360, }}
-                                        transition= {{ 
-                                            duration: 2,
-                                            repeat: Infinity,
-                                            repeatDelay: 3,
-                                            repeatType: 'reverse',
-                                            type: ''
-                                        }}
-                                        
-                                        src="images/logo.png" alt=""/>
-                                </a>
-                            </div>
-                            <div className="headerins__right">
-                                <div className="headerins__menu">
-                                    <ul>
-                                                <li className="active">
-                                            <a href="index.html">главная</a>
-                                        </li>
-                                        <li>
-                                            <a href="whitepapers.html">white papers</a>
-                                        </li>
-                                        <li>
-                                            <a href="markerts.html">Markerts</a>
-                                        </li>
-                                        <li>
-                                            <a href="products.html">Products</a>
-                                        </li>
-                                        <li>
-                                            <a href="buynow.html">Buy Now </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="headerins__lang">
-                                    <div className="headerins__langvisible">
-                                        <div className="headerins__langvisiblevalue">
-                                            ENG
-                                        </div>
-                                    </div>
-                                    <div className="headerins__langhiden">
-                                        <ul>
-                                            <li>
-                                                <a href="#">ENG</a>
-                                                <a href="#">RU</a>
-                                                <a href="#">ENG</a>
-                                                <a href="#">RU</a>
-                                                <a href="#">ENG</a>
-                                                <a href="#">RU</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <motion.div 
-                                whileHover={{
-                                    scale: 1.3
-                                }}
-                                whileTap={{
-                                    background: 'lightblue'
-                                }}
-                                className="hamburger">
-                                <span></span><span></span><span></span>
-                            </motion.div>
-                        </div>
-                    </div>
-                </header> */}
 
-            <div className="firstmain">
+
+            {/* <motion.div
+              style={{ scaleY: scrollYProgress, color: 'black', marginTop: '400px' }}
+            >
+              scaleY: scrollYProgress
+            </motion.div> */}
+
+            <div className="firstmain" >
+              <Element
+                name="0Container"
+              ></Element>
+
+
               {/* <Link to="section1">Link</Link> */}
-              {/* <button onClick={scrollToTop}>Scroll UP</button>
+              {/* <button onClick={scrollToTop}>Scroll UP</button> */}
 
-              <Link
-                // activeClass="active"
-                to="secondInsideContainer"
-                spy={true}
-                smooth={true}
-                duration={250}
-                // containerId="containerElement"
-                style={{ display: "inline-block", margin: "20px" }}
-              >
-                Go to second element inside container
-              </Link> */}
 
               <div
                 className="firstmain__scroll wow fadeIn"
                 data-wow-duration="2s"
+              // style = {{top: {scrollY}}}
+              // style={{ scaleY: scrollYProgress }}
               >
-                <div className="firstmain__scrolltext">
-                  <Link
-                    // activeClass="active"
-                    to="secondInsideContainer"
-                    spy={true}
-                    smooth={true}
-                    duration={250}
-                    // containerId="containerElement"
-                    // style={{ display: "inline-block", margin: "20px" }}
-                  >
+                <div className="firstmain__scrolltext" >
                     Scroll Down
-                    <div className="cont">
-                      <div className="mouse">
-                        <span></span>
-                      </div>
-                    </div>
-                  </Link>
-                  {/* Scroll Down */}
-                  {/* <div className="cont">
                     <div className="mouse">
                       <span></span>
                     </div>
-                  </div> */}
+                  {/* </Link> */}
                 </div>
 
                 <div className="firstmain__scrollbottom">
                   <img src="images/scroll.png" alt="" />
-                  {/* <div className="cont">
-                    <div className="mouse">
-                      <span></span>
-                    </div>
-                  </div> */}
+                  {/* <span className="green"></span> */}
+                  <span className={scrollItems[0]}>
+                    <Link
+                      activeClass="active"
+                      to="0Container"
+                      spy={true}
+                      smooth={true}
+                      duration={250}
+                      onClick={() => setScrollItems(['green', '', '', '', ''])}
 
-                  <span className="green"></span>
-                  <span></span>
-                  <span></span>
+                    />
+                  </span>
+                  <span className={scrollItems[1]}>
+                    <Link
+                      activeClass="active"
+                      to="1Container"
+                      spy={true}
+                      smooth={true}
+                      duration={250}
+                      onClick={() => setScrollItems(['', 'green', '', '', ''])}
+
+                    >
+                      <span ></span>
+
+                    </Link>
+                  </span>
+                  <span className={scrollItems[2]}>
+                    <Link
+                      activeClass="active"
+                      to="2Container"
+                      spy={true}
+                      smooth={true}
+                      duration={250}
+                      onClick={() => setScrollItems(['', '', 'green', '', ''])}
+
+                    >
+                      <span></span>
+                    </Link>
+                  </span>
+                  <span className={scrollItems[3]}>
+                    <Link
+                      activeClass="active"
+                      to="3Container"
+                      spy={true}
+                      smooth={true}
+                      duration={250}
+                      onClick={() => setScrollItems(['', '', '', 'green', ''])}
+                    >
+                      <span></span>
+                    </Link>
+                  </span>
+                  <span className={scrollItems[4]}>
+                    <Link
+                      activeClass="active"
+                      to="4Container"
+                      spy={true}
+                      smooth={true}
+                      duration={250}
+                      onClick={() => setScrollItems(['', '', '', '', 'green'])}
+                    >
+                      <span></span>
+                    </Link>
+                  </span>
                 </div>
               </div>
               <motion.div
@@ -307,12 +279,8 @@ function Main() {
         </div>
 
         <Element
-          name="secondInsideContainer"
-          // style={{
-          //   marginBottom: "200px",
-          // }}
+          name="1Container"
         >
-          second element inside container
         </Element>
 
         <motion.div
@@ -442,6 +410,9 @@ function Main() {
           whileInView="visible"
           viewport={{ amount: 0.2, once: true }}
         >
+          <Element
+            name="2Container"
+          ></Element>
           <motion.div
             variants={rightShiftAnimation}
             className="best wow fadeInRight"
@@ -532,6 +503,9 @@ function Main() {
           className="roadmap wow fadeIn"
           data-wow-duration="2s"
         >
+          <Element
+            name="3Container"
+          ></Element>
           <div className="containerm">
             <div className="roadmap__inside">
               <motion.h3
@@ -782,6 +756,9 @@ function Main() {
             whileInView="visible"
             viewport={{ amount: 0.2, once: true }}
           >
+            <Element
+              name="4Container"
+            ></Element>
             <motion.div variants={upSingleAnimation} className="team">
               <div className="containerm">
                 <div className="team__inside">
@@ -817,9 +794,9 @@ function Main() {
                       // slidesPerView={3}
                       navigation
                       pagination={{ clickable: true }}
-                      // scrollbar={{ draggable: true }}
-                      // onSwiper={(swiper) => console.log(swiper)}
-                      // onSlideChange={() => console.log('slide change')}
+                    // scrollbar={{ draggable: true }}
+                    // onSwiper={(swiper) => console.log(swiper)}
+                    // onSlideChange={() => console.log('slide change')}
                     >
                       <SwiperSlide>
                         <div className="team__item">
@@ -1116,7 +1093,7 @@ function Main() {
           </motion.div>
         </div>
       </motion.div>
-    </>
+    </div>
   );
 }
 
