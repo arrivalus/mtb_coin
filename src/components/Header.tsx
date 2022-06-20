@@ -134,13 +134,13 @@ function Header(props: any) {
             <div className="headerins__menu" style={{ marginTop: "70px" }}>
               <ul>
                 <li className="active">
-                  <a href="indexzzz">главная</a>
+                  <a href="/">главная</a>
                 </li>
                 <li>
                   <a href="whitepapers">white papers</a>
                 </li>
                 <li>
-                  <a href="markerts">Markerts</a>
+                  <a href="markets">Markets</a>
                 </li>
                 <li>
                   <a href="products">Products</a>
