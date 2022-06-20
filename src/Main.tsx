@@ -107,7 +107,7 @@ function Main() {
           // style={{ scaleY: scrollYProgress }}
           style={{
             position: "fixed",
-            top: "200px"
+            top: "200px",
           }}
         >
           <div className="firstmain__scrolltext">
@@ -192,12 +192,12 @@ function Main() {
               {/* <Link to="section1">Link</Link> */}
               {/* <button onClick={scrollToTop}>Scroll UP</button> */}
 
-             
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ amount: 0.2, once: true }}
                 className="containerm"
+                onMouseEnter={() => setScrollItems(["green", "", "", "", ""])}
               >
                 <div className="firstmain__left">
                   <motion.h1
@@ -278,6 +278,7 @@ function Main() {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.2, once: true }}
+          onMouseEnter={() => setScrollItems(["", "green", "", "", ""])}
           // className="secscreen secscreenscroll wow fadeInLeft" data-wow-duration="2s"
         >
           <motion.div
@@ -406,6 +407,7 @@ function Main() {
             variants={rightShiftAnimation}
             className="best wow fadeInRight"
             data-wow-duration="2s"
+            onMouseEnter={() => setScrollItems(["", "", "green", "", ""])}
           >
             <div className="best__top wow fadeInLeft" data-wow-duration="2s">
               <div className="best__wave">
@@ -493,7 +495,10 @@ function Main() {
           data-wow-duration="2s"
         >
           <Element name="3Container"></Element>
-          <div className="containerm">
+          <div
+            className="containerm"
+            onMouseEnter={() => setScrollItems(["", "", "", "green", ""])}
+          >
             <div className="roadmap__inside">
               <motion.h3
                 variants={upAnimation}
@@ -745,7 +750,10 @@ function Main() {
           >
             <Element name="4Container"></Element>
             <motion.div variants={upSingleAnimation} className="team">
-              <div className="containerm">
+              <div
+                className="containerm"
+                onMouseEnter={() => setScrollItems(["", "", "", "", "green"])}
+              >
                 <div className="team__inside">
                   <h2
                     className="team__title wow fadeInUp"
