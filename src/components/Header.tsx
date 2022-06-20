@@ -16,7 +16,7 @@ function Header(props: any) {
   const heightSizes = [150, 80];
   const topSizes = [35, 0];
   const imgWidthSizes = [300, 150];
-  const backgroundVariants = ["", "white"];
+  const backgroundVariants = ["blue", "white"];
   const myHeight = useTransform(props.scrollY, props.offSetY, heightSizes);
   const myTop = useTransform(props.scrollY, props.offSetY, topSizes);
   const myImgSize = useTransform(props.scrollY, props.offSetY, imgWidthSizes);
