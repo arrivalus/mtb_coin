@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/style.scss";
+import "../css/style.scss";
 // import { motion, useTransform, useViewportScroll } from "framer-motion";
 
 function Hamburger(props: any) {

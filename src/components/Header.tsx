@@ -1,7 +1,6 @@
 import React from "react";
-import "./css/style.scss";
+import "../css/style.scss";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
-import Hamburger from "./Hamburder";
 import {
   Drawer,
   DrawerBody,
@@ -67,13 +66,13 @@ function Header(props: any) {
             <div className="headerins__menu">
               <ul>
                 <li className="active">
-                  <a href="index">главная</a>
+                  <a href="/">главная</a>
                 </li>
                 <li>
                   <a href="whitepapers">white papers</a>
                 </li>
                 <li>
-                  <a href="markerts">Markerts</a>
+                  <a href="markets">Markerts</a>
                 </li>
                 <li>
                   <a href="products">Products</a>
@@ -135,7 +134,7 @@ function Header(props: any) {
             <div className="headerins__menu" style={{ marginTop: "70px" }}>
               <ul>
                 <li className="active">
-                  <a href="index">главная</a>
+                  <a href="indexzzz">главная</a>
                 </li>
                 <li>
                   <a href="whitepapers">white papers</a>

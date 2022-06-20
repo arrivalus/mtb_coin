@@ -11,10 +11,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import Header from "./Header";
-import { Heading } from "@chakra-ui/react";
 
 import { Link, animateScroll as scroll, Element } from "react-scroll";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const upAnimation = {
   hidden: (custom: any) => ({
@@ -119,6 +119,7 @@ function Main() {
                 className="firstmain__scroll wow fadeIn"
                 data-wow-duration="2s"
               // style={{ scaleY: scrollYProgress }}
+                // style={{ position: "absolute", top: '50%' }}
               >
                 <div className="firstmain__scrolltext" >
                   Scroll Down
@@ -1004,81 +1005,11 @@ function Main() {
             whileInView="visible"
             viewport={{ amount: 0.2, once: true }}
           >
-            <motion.footer variants={leftShiftAnimation} className="footer ">
-              <div className="containerm">
-                <div
-                  className="footer__top wow fadeInUp"
-                  data-wow-duration="2s"
-                >
-                  <div className="footer__left">
-                    <div className="footer__title">About us</div>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard.
-                    </p>
-                  </div>
-                  <div className="footer__menu">
-                    <div className="footer__title">Social</div>
-                    <div className="footer__nav">
-                      <ul>
-                        <li>
-                          <a target="_blank" href="#">
-                            Facebook
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="#">
-                            Twitter
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="#">
-                            Instagram
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="#">
-                            LinkedIn
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="footer__menu">
-                    <div className="footer__title">Resources</div>
-                    <div className="footer__nav">
-                      <ul>
-                        <li>
-                          <a href="#">Home</a>
-                        </li>
-                        <li>
-                          <a href="#">Whitepapers</a>
-                        </li>
-                        <li>
-                          <a href="#">Markets</a>
-                        </li>
-                        <li>
-                          <a href="#">Buy now</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="footer__copyr wow fadeInUp"
-                  data-wow-duration="2s"
-                >
-                  <div className="footer__copyttext">
-                    Copyright © 2021 Safemoon LLC. | All Rights Reserved
-                  </div>
-                </div>
-              </div>
-            </motion.footer>
+            <Footer/>
           </motion.div>
         </div>
       </motion.div>
-    </div>
+    </div> 
   );
 }
 
