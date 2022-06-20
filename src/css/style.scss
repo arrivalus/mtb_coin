@@ -207,7 +207,7 @@ p {
 //
 .wrapper {
   overflow-x: hidden;
-  position: relative;
+  // position: relative;
 }
 
 .mainscreen {
@@ -508,14 +508,15 @@ p {
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
+    z-index: 100;
     &:hover {
       .firstmain__scrolltext {
         color: #216bad;
-        bottom: -25px;
+        bottom: -15px;
       }
       .firstmain__scrollbottom {
         img {
-          bottom: -25px;
+          bottom: -15px;
         }
         // span {
         //   background-color: #6cd5d1;
