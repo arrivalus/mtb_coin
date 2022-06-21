@@ -1,11 +1,18 @@
 import { useViewportScroll } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 function WhitePapers() {
   const { scrollY } = useViewportScroll();
   const offSetY = [0, 150];
+  const [menuItemsClass, setMenuItemsClass] = useState<string[]>([
+    "",
+    "active",
+    "",
+    "",
+    "",
+  ]);
   return (
     <>
       <div className="wrapper">
@@ -15,7 +22,7 @@ function WhitePapers() {
           style={{ backgroundImage: "url(images/white_1_Bg.jpg)" }}
         >
           <div className="contfoescroll">
-            <Header offSetY={offSetY} scrollY={scrollY} />
+            <Header offSetY={offSetY} scrollY={scrollY} menuItemsClass={menuItemsClass}/>
             <div className="firstmain">
               <div
                 className="firstmain__scroll wow fadeIn"

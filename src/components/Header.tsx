@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/style.scss";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import {
@@ -65,19 +65,27 @@ function Header(props: any) {
           <div className="headerins__right">
             <div className="headerins__menu">
               <ul>
-                <li className="active">
-                  <a href="/">главная</a>
+                <li className={props.menuItemsClass[0]}>
+                  <a
+                    href="/"
+                    // onClick={() => {
+                    //   console.log("click");
+                    //   setMenuItemsClass(["active", "", "", "", ""]);
+                    // }}
+                  >
+                    главная
+                  </a>
                 </li>
-                <li>
+                <li className={props.menuItemsClass[1]}>
                   <a href="whitepapers">white papers</a>
                 </li>
-                <li>
+                <li className={props.menuItemsClass[2]}>
                   <a href="markets">Markerts</a>
                 </li>
-                <li>
+                <li className={props.menuItemsClass[3]}>
                   <a href="products">Products</a>
                 </li>
-                <li>
+                <li className={props.menuItemsClass[4]}>
                   <a href="buynow">Buy Now </a>
                 </li>
               </ul>
@@ -133,19 +141,19 @@ function Header(props: any) {
           <DrawerBody>
             <div className="headerins__menu" style={{ marginTop: "70px" }}>
               <ul>
-                <li className="active">
+                <li className={props.menuItemsClass[0]}>
                   <a href="/">главная</a>
                 </li>
-                <li>
+                <li className={props.menuItemsClass[1]}>
                   <a href="whitepapers">white papers</a>
                 </li>
-                <li>
+                <li className={props.menuItemsClass[2]}>
                   <a href="markets">Markets</a>
                 </li>
-                <li>
+                <li className={props.menuItemsClass[3]}>
                   <a href="products">Products</a>
                 </li>
-                <li>
+                <li className={props.menuItemsClass[4]}>
                   <a href="buynow">Buy Now </a>
                 </li>
               </ul>

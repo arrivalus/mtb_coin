@@ -1,17 +1,24 @@
 import { useViewportScroll } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 function Markets() {
   const { scrollY } = useViewportScroll();
   const offSetY = [0, 150];
+  const [menuItemsClass, setMenuItemsClass] = useState<string[]>([
+    "",
+    "",
+    "active",
+    "",
+    "",
+  ]);
   return (
     <>
     <div className="wrapper">
         <div className="mainscreen wow fadeIn" data-wow-duration="2s" style={{backgroundImage: "url(images/market_1_bg.jpg)"}}>
             <div className="contfoescroll">
-            <Header offSetY={offSetY} scrollY={scrollY} />
+            <Header offSetY={offSetY} scrollY={scrollY} menuItemsClass={menuItemsClass}/>
                 <div className="firstmain firstmainmarket">
                     <div className="firstmain__scroll wow fadeIn" data-wow-duration="2s">
                         <div className="firstmain__scrolltext">Scroll Down</div>

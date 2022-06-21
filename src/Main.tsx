@@ -20,8 +20,9 @@ import "swiper/css/scrollbar";
 import { Link, animateScroll as scroll, Element } from "react-scroll";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollDown from "./components/ScrollDown";
 
-const upAnimation = {
+export const upAnimation = {
   hidden: (custom: any) => ({
     y: (1 / custom) * 200,
     opacity: 0,
@@ -37,7 +38,7 @@ const upAnimation = {
   }),
 };
 
-const leftShiftAnimation = {
+export const leftShiftAnimation = {
   hidden: {
     x: -300,
     opacity: 0,
@@ -52,7 +53,7 @@ const leftShiftAnimation = {
   },
 };
 
-const rightShiftAnimation = {
+export const rightShiftAnimation = {
   hidden: {
     x: 300,
     opacity: 0,
@@ -67,7 +68,7 @@ const rightShiftAnimation = {
   },
 };
 
-const upSingleAnimation = {
+export const upSingleAnimation = {
   hidden: {
     y: 200,
     opacity: 0,
@@ -98,87 +99,24 @@ function Main() {
     "",
     "",
   ]);
+  const [menuItemsClass, setMenuItemsClass] = useState<string[]>([
+    "active",
+    "",
+    "",
+    "",
+    "",
+  ]);
   return (
     <div ref={ref}>
       <motion.div initial="hidden" whileInView="visible" className="wrapper">
-        <div
-          className="firstmain__scroll wow fadeIn"
-          data-wow-duration="2s"
-          // style={{ scaleY: scrollYProgress }}
-          style={{
-            position: "fixed",
-            top: "200px",
-          }}
-        >
-          <div className="firstmain__scrolltext">
-            Scroll Down
-            <div className="mouse">
-              <span></span>
-            </div>
-            {/* </Link> */}
-          </div>
-
-          <div className="firstmain__scrollbottom">
-            <img src="images/scroll.png" alt="" />
-            <Link
-              activeClass="active"
-              to="0Container"
-              spy={true}
-              smooth={true}
-              duration={250}
-              onClick={() => setScrollItems(["green", "", "", "", ""])}
-            >
-              <span className={scrollItems[0]}></span>
-            </Link>
-            <Link
-              activeClass="active"
-              to="1Container"
-              spy={true}
-              smooth={true}
-              duration={250}
-              onClick={() => setScrollItems(["", "green", "", "", ""])}
-            >
-              <span className={scrollItems[1]}></span>
-            </Link>
-            <Link
-              activeClass="active"
-              to="2Container"
-              spy={true}
-              smooth={true}
-              duration={250}
-              onClick={() => setScrollItems(["", "", "green", "", ""])}
-            >
-              <span className={scrollItems[2]}></span>
-            </Link>
-            <Link
-              activeClass="active"
-              to="3Container"
-              spy={true}
-              smooth={true}
-              duration={250}
-              onClick={() => setScrollItems(["", "", "", "green", ""])}
-            >
-              <span className={scrollItems[3]}></span>
-            </Link>
-            <Link
-              activeClass="active"
-              to="4Container"
-              spy={true}
-              smooth={true}
-              duration={250}
-              onClick={() => setScrollItems(["", "", "", "", "green"])}
-            >
-              <span className={scrollItems[4]}></span>
-            </Link>
-          </div>
-        </div>
+        <ScrollDown scrollItems={scrollItems} setScrollItems={setScrollItems}/>
         <div
           className="mainscreen wow fadeIn"
           data-wow-duration="2s"
           style={{ backgroundImage: "url(images/bg1.jpg)" }}
         >
           <div className="contfoescroll">
-            <Header offSetY={offSetY} scrollY={scrollY} />
+            <Header offSetY={offSetY} scrollY={scrollY} menuItemsClass={menuItemsClass}/>
 
             {/* <motion.div
               style={{ scaleY: scrollYProgress, color: 'black', marginTop: '400px' }}
