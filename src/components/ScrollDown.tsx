@@ -4,6 +4,7 @@ import { Link, animateScroll as scroll, Element } from "react-scroll";
 type Iprops = {
   scrollItems: string[];
   setScrollItems: Dispatch<SetStateAction<string[]>>;
+  elementsCount: number;
 };
 function ScrollDown(props: Iprops) {
   return (
@@ -33,14 +34,18 @@ function ScrollDown(props: Iprops) {
             smooth={true}
             duration={250}
             onClick={() => {
-              const tempArray: string[] = ["", "", "", "", ""];
+              const tempArray: string[] = [];
+              for (let i =0; i<props.elementsCount; i++){
+                tempArray[i]="";
+              }
               tempArray[index] = "green";
               props.setScrollItems(tempArray);
             }}
           >
             <span className={props.scrollItems[index]}></span>
           </Link>
-        ))}
+        )
+        )}
       </div>
     </div>
   );

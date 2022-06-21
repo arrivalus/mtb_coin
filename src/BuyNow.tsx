@@ -43,6 +43,7 @@ function BuyNow() {
             <ScrollDown
               scrollItems={scrollItems}
               setScrollItems={setScrollItems}
+              elementsCount={5}
             />
             <div className="contfoescroll">
               <Header offSetY={offSetY} scrollY={scrollY} menuItemsClass={menuItemsClass}/>

@@ -109,14 +109,18 @@ function Main() {
   return (
     <div ref={ref}>
       <motion.div initial="hidden" whileInView="visible" className="wrapper">
-        <ScrollDown scrollItems={scrollItems} setScrollItems={setScrollItems}/>
+        <ScrollDown scrollItems={scrollItems} setScrollItems={setScrollItems} elementsCount={5} />
         <div
           className="mainscreen wow fadeIn"
           data-wow-duration="2s"
           style={{ backgroundImage: "url(images/bg1.jpg)" }}
         >
           <div className="contfoescroll">
-            <Header offSetY={offSetY} scrollY={scrollY} menuItemsClass={menuItemsClass}/>
+            <Header
+              offSetY={offSetY}
+              scrollY={scrollY}
+              menuItemsClass={menuItemsClass}
+            />
 
             {/* <motion.div
               style={{ scaleY: scrollYProgress, color: 'black', marginTop: '400px' }}

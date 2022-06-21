@@ -1,5 +1,11 @@
-import { useViewportScroll } from "framer-motion";
 import React, { useState } from "react";
+import "./css/style.scss";
+import {
+  motion,
+  useElementScroll,
+  useTransform,
+  useViewportScroll,
+} from "framer-motion";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
