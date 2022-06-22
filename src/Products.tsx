@@ -1,11 +1,22 @@
-import { useViewportScroll } from "framer-motion";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import "./css/style.scss";
+import {
+  motion,
+  useElementScroll,
+  useTransform,
+  useViewportScroll,
+} from "framer-motion";
+import { Element } from "react-scroll";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import ScrollDown from "./components/ScrollDown";
+import { upAnimation } from "./Main";
 
 function Products() {
   const { scrollY } = useViewportScroll();
   const offSetY = [0, 150];
+  const ref: any = useRef();
+  const [scrollItems, setScrollItems] = useState<string[]>(["green", ""]);
   const [menuItemsClass, setMenuItemsClass] = useState<string[]>([
     "",
     "",
@@ -15,36 +26,44 @@ function Products() {
   ]);
   return (
     <>
-      <div className="wrapper">
+      <motion.div initial="hidden" whileInView="visible" className="wrapper">
         <div
           className="mainscreen mainscreen_product wow fadeIn"
           data-wow-duration="2s"
           style={{ backgroundImage: "url(images/product_1_bg.jpg)" }}
         >
+          <ScrollDown
+            scrollItems={scrollItems}
+            setScrollItems={setScrollItems}
+            elementsCount={2}
+          />
           <div className="contfoescroll">
-            <Header offSetY={offSetY} scrollY={scrollY} menuItemsClass={menuItemsClass} />
+            <Header
+              offSetY={offSetY}
+              scrollY={scrollY}
+              menuItemsClass={menuItemsClass}
+            />
             <div className="firstmain">
-              <div
-                className="firstmain__scroll wow fadeIn"
-                data-wow-duration="2s"
+              <Element name="0Container"></Element>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.2, once: true }}
+                onMouseEnter={() => setScrollItems(["green", ""])}
+                className="containerm"
               >
-                <div className="firstmain__scrolltext">Scroll Down</div>
-                <div className="firstmain__scrollbottom">
-                  <img src="images/scroll.png" alt="" />
-                  <span className="green"></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div className="containerm">
                 <div className="firstmain__left">
-                  <h1
+                  <motion.h1
+                    variants={upAnimation}
+                    custom={1}
                     className="firstmain__title wow fadeInUp"
                     data-wow-duration="2s"
                   >
                     mtb coin products
-                  </h1>
-                  <div
+                  </motion.h1>
+                  <motion.div
+                    variants={upAnimation}
+                    custom={2}
                     className="firstmain__descr wow fadeInUp"
                     data-wow-duration="2s"
                   >
@@ -54,8 +73,10 @@ function Products() {
                       (BTC), Ethereum (ETH) and Tether (USDT) trading. Safemoon
                       can easily be bought and sold on BitMart using USDT.
                     </p>
-                  </div>
-                  <div
+                  </motion.div>
+                  <motion.div
+                    variants={upAnimation}
+                    custom={3}
                     className="firstmain__btn wow fadeInUp"
                     data-wow-duration="2s"
                   >
@@ -63,16 +84,28 @@ function Products() {
                       <span>Start trading</span>
                       <img src="images/btn_arrow.png" alt="" />
                     </a>
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
+
         <div className="footerbg">
           <div className="products secscreenscroll">
-            <div className="containerm">
-              <div className="products__row">
+            <Element name="1Container"></Element>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.2, once: true }}
+              onMouseEnter={() => setScrollItems(["", "green"])}
+              className="containerm"
+            >
+              <motion.div
+                className="products__row"
+                variants={upAnimation}
+                custom={1}
+              >
                 <a href="#" className="products__item">
                   <div className="products__name">MTB COIN WALLET</div>
                   <div
@@ -116,9 +149,14 @@ function Products() {
                   </div>
                   <div className="products__status">Coming Soon</div>
                 </a>
-              </div>
-              <div className="pagination">
-                <ul>
+              </motion.div>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.2, once: true }}
+                className="pagination"
+              >
+                <motion.ul variants={upAnimation} custom={2}>
                   <li>
                     <a href="#">1</a>
                   </li>
@@ -133,13 +171,13 @@ function Products() {
                   <li>
                     <a href="#">9</a>
                   </li>
-                </ul>
-              </div>
-            </div>
+                </motion.ul>
+              </motion.div>
+            </motion.div>
           </div>
-          <Footer/>
+          <Footer />
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

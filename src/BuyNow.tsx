@@ -37,10 +37,8 @@ function BuyNow() {
   return (
     <>
       <div ref={ref}>
-        <div className="wrapper">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
+        <motion.div initial="hidden" whileInView="visible" className="wrapper">
+          <div
             className="mainscreen mainscreen_buynow wow fadeIn"
             data-wow-duration="2s"
             style={{ backgroundImage: "url(images/buynow_1_bg.jpg)" }}
@@ -122,7 +120,7 @@ function BuyNow() {
                 </motion.div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           <div className="footerbg">
             <div className="buynow secscreenscroll">
@@ -412,7 +410,10 @@ function BuyNow() {
                   className="discl wow fadeInUp"
                   data-wow-duration="2s"
                 >
-                  <motion.div variants={upSingleAnimation} className="discl__inside">
+                  <motion.div
+                    variants={upSingleAnimation}
+                    className="discl__inside"
+                  >
                     Disclaimer
                     <i>
                       Cryptocurrency trading is extremely volatile and you could
@@ -432,7 +433,7 @@ function BuyNow() {
 
             <Footer />
           </div>
-        </div>
+        </motion.div>
       </div>
     </>
   );

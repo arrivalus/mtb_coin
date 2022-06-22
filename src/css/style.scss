@@ -207,7 +207,7 @@ p {
 //
 .wrapper {
   overflow-x: hidden;
-  // position: relative;
+  position: relative;
 }
 
 .mainscreen {
@@ -528,7 +528,7 @@ p {
     }
   }
   &__left {
-    max-width: 635px;
+    max-width: 640px;
     margin-bottom: 15px;
   }
   &__title {
