@@ -9,7 +9,12 @@ import {
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ScrollDown from "./components/ScrollDown";
-import { upAnimation } from "./Main";
+import {
+  commonRightShiftAnimation,
+  leftShiftAnimation,
+  upAnimation,
+  upSingleAnimation,
+} from "./Main";
 
 function BuyNow() {
   const { scrollY } = useViewportScroll();
@@ -46,7 +51,11 @@ function BuyNow() {
               elementsCount={5}
             />
             <div className="contfoescroll">
-              <Header offSetY={offSetY} scrollY={scrollY} menuItemsClass={menuItemsClass}/>
+              <Header
+                offSetY={offSetY}
+                scrollY={scrollY}
+                menuItemsClass={menuItemsClass}
+              />
               <div className="firstmain">
                 <Element name="0Container"></Element>
                 <motion.div
@@ -120,29 +129,47 @@ function BuyNow() {
               <div className="containerm">
                 <div className="buynow__inside">
                   <Element name="1Container"></Element>
-                  <div className="buynow__item">
-                    <div className="buynow__left">
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ amount: 0.2, once: true }}
+                    onMouseEnter={() =>
+                      setScrollItems(["", "green", "", "", ""])
+                    }
+                    className="buynow__item"
+                  >
+                    <motion.div
+                      variants={leftShiftAnimation}
+                      className="buynow__left"
+                    >
                       <div
                         className="buynow__img wow fadeInLeft"
                         data-wow-duration="2s"
                       >
                         <img src="images/mac1.png" alt="" />
                       </div>
-                    </div>
+                    </motion.div>
                     <div className="buynow__right">
-                      <h2
-                        className="buynow__title wow fadeInRight"
+                      <motion.h2
+                        variants={commonRightShiftAnimation}
+                        custom={1}
+                        // className="buynow__title wow fadeInRight"
+                        className="contents__title wow fadeInUp"
                         data-wow-duration="2s"
                       >
                         Step 1:{" "}
-                      </h2>
-                      <div
+                      </motion.h2>
+                      <motion.div
+                        variants={commonRightShiftAnimation}
+                        custom={2}
                         className="buynow__subtitle wow fadeInRight"
                         data-wow-duration="2s"
                       >
                         Create a Wallet
-                      </div>
-                      <div
+                      </motion.div>
+                      <motion.div
+                        variants={commonRightShiftAnimation}
+                        custom={3}
                         className="buynow__descr wow fadeInRight"
                         data-wow-duration="2s"
                       >
@@ -152,8 +179,10 @@ function BuyNow() {
                           it properly! Make sure to copy the contract address
                           below!
                         </p>
-                      </div>
-                      <div
+                      </motion.div>
+                      <motion.div
+                        variants={commonRightShiftAnimation}
+                        custom={4}
                         className="buynow__copy wow fadeInRight"
                         data-wow-duration="2s"
                       >
@@ -179,33 +208,52 @@ function BuyNow() {
                             </button>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
-                  </div>
+                  </motion.div>
+
                   <Element name="2Container"></Element>
-                  <div className="buynow__item">
-                    <div className="buynow__left">
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ amount: 0.2, once: true }}
+                    onMouseEnter={() =>
+                      setScrollItems(["", "", "green", "", ""])
+                    }
+                    className="buynow__item"
+                  >
+                    <motion.div
+                      variants={leftShiftAnimation}
+                      className="buynow__left"
+                    >
                       <div
                         className="buynow__img wow fadeInLeft"
                         data-wow-duration="2s"
                       >
                         <img src="images/mac2.png" alt="" />
                       </div>
-                    </div>
+                    </motion.div>
                     <div className="buynow__right">
-                      <h2
-                        className="buynow__title wow fadeInRight"
+                      <motion.h2
+                        variants={commonRightShiftAnimation}
+                        custom={1}
+                        // className="buynow__title wow fadeInRight"
+                        className="contents__title wow fadeInUp"
                         data-wow-duration="2s"
                       >
                         Step 2:{" "}
-                      </h2>
-                      <div
+                      </motion.h2>
+                      <motion.div
+                        variants={commonRightShiftAnimation}
+                        custom={2}
                         className="buynow__subtitle wow fadeInRight"
                         data-wow-duration="2s"
                       >
                         добавьте MetaBond в список активов
-                      </div>
-                      <div
+                      </motion.div>
+                      <motion.div
+                        variants={commonRightShiftAnimation}
+                        custom={3}
                         className="buynow__descr wow fadeInRight"
                         data-wow-duration="2s"
                       >
@@ -226,33 +274,52 @@ function BuyNow() {
                           Click "Done" at the top and you should now have
                           Safemoon added to your wallet!
                         </p>
-                      </div>
+                      </motion.div>
                     </div>
-                  </div>
+                  </motion.div>
+
                   <Element name="3Container"></Element>
-                  <div className="buynow__item">
-                    <div className="buynow__left">
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ amount: 0.2, once: true }}
+                    onMouseEnter={() =>
+                      setScrollItems(["", "", "", "green", ""])
+                    }
+                    className="buynow__item"
+                  >
+                    <motion.div
+                      variants={leftShiftAnimation}
+                      className="buynow__left"
+                    >
                       <div
                         className="buynow__img wow fadeInLeft"
                         data-wow-duration="2s"
                       >
                         <img src="images/mac3.png" alt="" />
                       </div>
-                    </div>
+                    </motion.div>
                     <div className="buynow__right">
-                      <h2
-                        className="buynow__title wow fadeInRight"
+                      <motion.h2
+                        variants={commonRightShiftAnimation}
+                        custom={1}
+                        // className="buynow__title wow fadeInRight"
+                        className="contents__title wow fadeInUp"
                         data-wow-duration="2s"
                       >
                         Step 3:{" "}
-                      </h2>
-                      <div
+                      </motion.h2>
+                      <motion.div
+                        variants={commonRightShiftAnimation}
+                        custom={2}
                         className="buynow__subtitle wow fadeInRight"
                         data-wow-duration="2s"
                       >
                         купить bnb или busd
-                      </div>
-                      <div
+                      </motion.div>
+                      <motion.div
+                        variants={commonRightShiftAnimation}
+                        custom={3}
                         className="buynow__descr wow fadeInRight"
                         data-wow-duration="2s"
                       >
@@ -271,33 +338,52 @@ function BuyNow() {
                           After purchasing, there may be a delay while your
                           transaction is processed. Be patient, this is normal!
                         </p>
-                      </div>
+                      </motion.div>
                     </div>
-                  </div>
+                  </motion.div>
+
                   <Element name="4Container"></Element>
-                  <div className="buynow__item">
-                    <div className="buynow__left">
-                      <div
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ amount: 0.2, once: true }}
+                    onMouseEnter={() =>
+                      setScrollItems(["", "", "", "", "green"])
+                    }
+                    className="buynow__item"
+                  >
+                    <motion.div
+                      variants={leftShiftAnimation}
+                      className="buynow__left"
+                    >
+                      <motion.div
                         className="buynow__img wow fadeInLeft"
                         data-wow-duration="2s"
                       >
                         <img src="images/mac4.png" alt="" />
-                      </div>
-                    </div>
+                      </motion.div>
+                    </motion.div>
                     <div className="buynow__right">
-                      <h2
-                        className="buynow__title wow fadeInRight"
+                      <motion.h2
+                        variants={commonRightShiftAnimation}
+                        custom={1}
+                        // className="buynow__title wow fadeInRight"
+                        className="contents__title wow fadeInUp"
                         data-wow-duration="2s"
                       >
                         Step 4:{" "}
-                      </h2>
-                      <div
+                      </motion.h2>
+                      <motion.div
+                        variants={commonRightShiftAnimation}
+                        custom={2}
                         className="buynow__subtitle wow fadeInRight"
                         data-wow-duration="2s"
                       >
                         Swap BSC for MTBcoin{" "}
-                      </div>
-                      <div
+                      </motion.div>
+                      <motion.div
+                        variants={commonRightShiftAnimation}
+                        custom={3}
                         className="buynow__descr wow fadeInRight"
                         data-wow-duration="2s"
                       >
@@ -315,12 +401,18 @@ function BuyNow() {
                           the top-right. Scroll down a little to the "Exchange"
                           box
                         </p>
-                      </div>
+                      </motion.div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
-                <div className="discl wow fadeInUp" data-wow-duration="2s">
-                  <div className="discl__inside">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ amount: 0.2, once: true }}
+                  className="discl wow fadeInUp"
+                  data-wow-duration="2s"
+                >
+                  <motion.div variants={upSingleAnimation} className="discl__inside">
                     Disclaimer
                     <i>
                       Cryptocurrency trading is extremely volatile and you could
@@ -333,8 +425,8 @@ function BuyNow() {
                       you should seek Independent legal or financial advice to
                       understand the nature of your position.
                     </i>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
 
