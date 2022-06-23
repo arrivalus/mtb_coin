@@ -10,11 +10,13 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
+  useMediaQuery,
 } from "@chakra-ui/react";
 
 function Header(props: any) {
-  const heightSizes = [150, 80];
-  const topSizes = [35, 0];
+  const [isSmallerThan460] = useMediaQuery("(max-width: 460px)");
+  const heightSizes = isSmallerThan460 ? [70, 70] : [150, 80];
+  const topSizes = isSmallerThan460 ? [0, 0] : [35, 0];
   const imgWidthSizes = [300, 150];
   const backgroundVariants = ["blue", "white"];
   const myHeight = useTransform(props.scrollY, props.offSetY, heightSizes);

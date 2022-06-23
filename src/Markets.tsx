@@ -60,7 +60,7 @@ function Markets() {
                     className="firstmain__title wow fadeInUp"
                     data-wow-duration="2s"
                   >
-                    markerts
+                    markets
                   </motion.h1>
                   <motion.div
                     variants={upAnimation}
