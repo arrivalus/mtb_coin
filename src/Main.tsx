@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./css/style.scss";
 import {
   motion,
@@ -106,6 +106,7 @@ function Main() {
   const { scrollY } = useViewportScroll();
   const offSetY = [0, 150];
   const ref: any = useRef();
+  const ref1: any = useRef();
   const { scrollYProgress } = useElementScroll(ref);
   const [scrollItems, setScrollItems] = useState<string[]>([
     "green",
@@ -121,10 +122,18 @@ function Main() {
     "",
     "",
   ]);
+
+  useEffect(() => {
+    // ReactDOM.findDOMNode(this.refs.table).addEventListener('scroll', this.listenScrollEvent);
+  }, []);
   return (
     <div ref={ref}>
       <motion.div initial="hidden" whileInView="visible" className="wrapper">
-        <ScrollDown scrollItems={scrollItems} setScrollItems={setScrollItems} elementsCount={5} />
+        <ScrollDown
+          scrollItems={scrollItems}
+          setScrollItems={setScrollItems}
+          elementsCount={5}
+        />
         <div
           className="mainscreen wow fadeIn"
           data-wow-duration="2s"
@@ -243,7 +252,14 @@ function Main() {
             className="secscreen secscreenscroll wow fadeInLeft"
             data-wow-duration="2s"
           >
-            <div className="containerm">
+            <div
+              className="containerm"
+              ref={ref1}
+              onScroll={() => {
+                console.log('Scroll elem1')
+                setScrollItems(["", "green", "", "", ""])
+              }}
+            >
               <div className="secscreen__inside">
                 <div className="secscreen__leftimg">
                   <img src="images/img_bg_2.png" alt="" />

@@ -32,7 +32,8 @@ function ScrollDown(props: Iprops) {
             to={`${index}Container`}
             spy={true}
             smooth={true}
-            duration={250}
+            // smooth='linear'
+            duration={1500}
             onClick={() => {
               const tempArray: string[] = [];
               for (let i =0; i<props.elementsCount; i++){
